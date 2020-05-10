@@ -30,7 +30,7 @@
                 android:layout_height="160dp"
                 android:layout_gravity="center_horizontal"
                 android:foregroundGravity="top"
-                android:src="@drawable/user1"
+                imageLocal="@{item.avatar}"
                 app:riv_corner_radius_bottom_left="@dimen/spacing_middle"
                 app:riv_corner_radius_bottom_right="@dimen/spacing_middle"
                 app:riv_corner_radius_top_left="@dimen/spacing_middle"

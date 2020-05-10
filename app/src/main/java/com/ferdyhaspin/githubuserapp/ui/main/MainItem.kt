@@ -4,7 +4,6 @@ import android.view.View
 import com.ferdyhaspin.githubuserapp.R
 import com.ferdyhaspin.githubuserapp.data.model.UsersItem
 import com.ferdyhaspin.githubuserapp.databinding.ItemUserBinding
-import com.ferdyhaspin.githubuserapp.util.ext.loadLocal
 import com.xwray.groupie.databinding.BindableItem
 
 /**
@@ -24,8 +23,6 @@ class MainItem(
         val image = viewBinding.rivPhoto
         val name = viewBinding.tvName as View
         val company = viewBinding.tvCompany as View
-
-        image.loadLocal(user.avatar)
 
         viewBinding.root.setOnClickListener {
             callback.onItemClickListener(image, name, company, user = user)
