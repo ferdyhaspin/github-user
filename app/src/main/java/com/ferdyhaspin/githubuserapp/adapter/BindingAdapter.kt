@@ -5,8 +5,8 @@ import androidx.databinding.BindingAdapter
 import com.ferdyhaspin.githubuserapp.util.ext.loadLocal
 
 /**
- * Created by ferdyhaspin & ilhamelmujib on 11/05/20.
- * Copyright (c) 2020 Bank Syariah Mandiri - Super Apps All rights reserved.
+ * Created by ferdyhaspin on 11/05/20.
+ * Copyright (c) 2020 Github User Apps All rights reserved.
  */
 
 @BindingAdapter("imageLocal")
