@@ -38,7 +38,7 @@
                 app:riv_tile_mode="clamp" />
 
             <TextView
-                android:id="@+id/tvLocation"
+                android:id="@+id/tvCompany"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/spacing_middle"
@@ -47,10 +47,10 @@
                 android:layout_marginBottom="@dimen/spacing_small"
                 android:fontFamily="@font/google_sans_regular"
                 android:maxLines="1"
-                android:text="@{item.location}"
+                android:text="@{item.company}"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/font_extra_super_small"
-                tool:text="Bogor, Indonesia" />
+                tool:text="Google, Inc." />
 
             <TextView
                 android:id="@+id/tvName"
@@ -66,19 +66,6 @@
                 android:textSize="@dimen/font_small"
                 tool:text="Ferdi Haspi" />
 
-            <TextView
-                android:id="@+id/tvRepository"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_middle"
-                android:layout_marginEnd="@dimen/spacing_middle"
-                android:layout_marginBottom="@dimen/spacing_middle"
-                android:fontFamily="@font/google_sans_regular"
-                android:maxLines="1"
-                android:text="@{`Jumlah Repository : ` + item.repository}"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/font_extra_super_small"
-                tool:text="Jumlah Repository : 180" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>

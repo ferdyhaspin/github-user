@@ -10,7 +10,7 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class User(
-	val users: List<UsersItem>
+    val users: List<UsersItem>
 ) : Parcelable
 
 @Parcelize

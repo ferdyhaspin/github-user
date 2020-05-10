@@ -23,13 +23,12 @@ class MainItem(
 
         val image = viewBinding.rivPhoto
         val name = viewBinding.tvName as View
-        val location = viewBinding.tvLocation as View
-        val repository = viewBinding.tvRepository as View
+        val company = viewBinding.tvCompany as View
 
         image.loadLocal(user.avatar)
 
         viewBinding.root.setOnClickListener {
-            callback.onItemClickListener(image, name, location, repository, user = user)
+            callback.onItemClickListener(image, name, company, user = user)
         }
     }
 

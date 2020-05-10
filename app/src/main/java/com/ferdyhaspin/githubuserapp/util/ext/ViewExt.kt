@@ -40,7 +40,7 @@ fun ImageView.loadImageCircle(url: String) =
         .load(url)
         .into(this)
 
-fun ImageView.loadLocal(name: String) {
+fun ImageView.loadLocal(name: String?) {
     Glide.with(this)
         .load(
             resources.getIdentifier(

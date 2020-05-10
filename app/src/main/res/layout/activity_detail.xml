@@ -1,8 +1,151 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.detail.DetailActivity">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.ferdyhaspin.githubuserapp.ui.detail.DetailViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <include layout="@layout/toolbar" />
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/rivPhoto"
+            imageDrawable="@{viewModel.user.avatar}"
+            android:layout_width="match_parent"
+            android:layout_height="350dp"
+            android:layout_marginBottom="@dimen/spacing_large"
+            android:contentDescription="@null"
+            android:scaleType="fitCenter"
+            android:transitionName="detail_image"
+            app:riv_corner_radius_top_left="@dimen/spacing_middle"
+            app:riv_corner_radius_top_right="@dimen/spacing_middle"
+            app:riv_tile_mode="clamp"
+            app:srcCompat="@drawable/user1" />
+
+        <TextView
+            style="@style/TextViewRegularDarkGraySmall"
+            android:layout_marginStart="@dimen/spacing_middle"
+            android:layout_marginEnd="@dimen/spacing_middle"
+            android:text="@{viewModel.user.username + ` - ` + viewModel.user.company}"
+            android:textSize="@dimen/font_small"
+            android:transitionName="detail_company"
+            tool:text="ferdyhaspin | Google, Inc." />
+
+        <TextView
+            style="@style/TextViewRegularBlackMediumSmall"
+            android:layout_marginStart="@dimen/spacing_middle"
+            android:layout_marginEnd="@dimen/spacing_middle"
+            android:layout_marginBottom="@dimen/spacing_small"
+            android:text="@{viewModel.user.name}"
+            android:textSize="@dimen/font_medium"
+            android:transitionName="detail_name"
+            tool:text="Ferdi Haspi Nur Imanulloh" />
+
+        <TextView
+            style="@style/TextViewRegularDarkGraySmall"
+            android:layout_marginStart="@dimen/spacing_middle"
+            android:layout_marginEnd="@dimen/spacing_middle"
+            android:layout_marginBottom="@dimen/spacing_small"
+            android:text="@{viewModel.user.location}"
+            android:textSize="@dimen/font_small"
+            tool:text="Bogor, Jawa Barat" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_large"
+            android:baselineAligned="false"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextViewRegularDarkGraySmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/spacing_middle"
+                    android:layout_marginEnd="@dimen/spacing_middle"
+                    android:text="@{Integer.toString(viewModel.user.follower)}"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/font_medium"
+                    tool:text="48" />
+
+
+                <TextView
+                    style="@style/TextViewRegularDarkGraySmall"
+                    android:layout_marginStart="@dimen/spacing_middle"
+                    android:layout_marginEnd="@dimen/spacing_middle"
+                    android:text="@string/followers"
+                    android:textColor="@android:color/black" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextViewRegularDarkGraySmall"
+                    android:layout_marginStart="@dimen/spacing_middle"
+                    android:layout_marginEnd="@dimen/spacing_middle"
+                    android:text="@{Integer.toString(viewModel.user.following)}"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/font_medium"
+                    tool:text="48" />
+
+
+                <TextView
+                    style="@style/TextViewRegularDarkGraySmall"
+                    android:layout_marginStart="@dimen/spacing_middle"
+                    android:layout_marginEnd="@dimen/spacing_middle"
+                    android:text="@string/following"
+                    android:textColor="@android:color/black" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <TextView
+                    style="@style/TextViewRegularDarkGraySmall"
+                    android:layout_marginStart="@dimen/spacing_middle"
+                    android:layout_marginEnd="@dimen/spacing_middle"
+                    android:text="@{Integer.toString(viewModel.user.repository)}"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/font_medium"
+                    tool:text="48" />
+
+
+                <TextView
+                    style="@style/TextViewRegularDarkGraySmall"
+                    android:layout_marginStart="@dimen/spacing_middle"
+                    android:layout_marginEnd="@dimen/spacing_middle"
+                    android:text="@string/repository"
+                    android:textColor="@android:color/black" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</layout>

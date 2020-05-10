@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">Github User App</string>
     <string name="colon">:</string>
-    <string name="name">Name</string>
+    <string name="name">Nama</string>
     <string name="username">Username</string>
-    <string name="followers">Followers</string>
-    <string name="following">Following</string>
+    <string name="followers">Pengikut</string>
+    <string name="following">Mengikuti</string>
     <string name="repository">Repository</string>
 </resources>

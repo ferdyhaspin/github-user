@@ -1,8 +1,11 @@
 package com.ferdyhaspin.githubuserapp.ui.main
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityOptionsCompat
+import androidx.core.util.Pair
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
@@ -11,6 +14,8 @@ import com.ferdyhaspin.githubuserapp.data.model.Resource
 import com.ferdyhaspin.githubuserapp.data.model.User
 import com.ferdyhaspin.githubuserapp.data.model.UsersItem
 import com.ferdyhaspin.githubuserapp.data.repository.UserRepository
+import com.ferdyhaspin.githubuserapp.ui.detail.DetailActivity
+import com.ferdyhaspin.githubuserapp.util.EXTRA_USER
 import com.ferdyhaspin.githubuserapp.util.ext.toGone
 import com.ferdyhaspin.githubuserapp.util.ext.toVisible
 import com.ferdyhaspin.githubuserapp.util.ext.toast
@@ -99,6 +104,20 @@ class MainActivity : AppCompatActivity(), MainItem.OnClickListener,
     }
 
     override fun onItemClickListener(vararg view: View, user: UsersItem) {
-        toast(user.toString())
+        val image = Pair(view[0], "detail_image")
+        val name = Pair(view[1], "detail_name")
+        val company = Pair(view[2], "detail_company")
+
+        val activityOptionsCompat =
+            ActivityOptionsCompat.makeSceneTransitionAnimation(
+                this,
+                image,
+                name,
+                company
+            )
+        val intent = Intent(this, DetailActivity::class.java).apply {
+            putExtra(EXTRA_USER, user)
+        }
+        startActivity(intent, activityOptionsCompat.toBundle())
     }
 }
