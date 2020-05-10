@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryTransparent">#1A008577</color>
+    <color name="colorPrimaryDarkTransparent">#40008577</color>
+    <color name="colorPrimaryLight">#03AA98</color>
+    <color name="colorPrimarySemiLight">#029787</color>
+    <color name="colorPrimaryDark">#037267</color>
+    <color name="colorAccent">#008577</color>
+    <color name="colorCloudWhite">#F8F8F8</color>
+    <color name="colorDarkWhite">#F0F0F0</color>
+    <color name="colorTransparentWhite">#58FFFFFF</color>
+    <color name="colorSilver">#b2bec3</color>
+    <color name="colorLightSilver">#CCCDCF</color>
+    <color name="colorTransparentLightSilver">#33CCCDCF</color>
+    <color name="colorTransparentBlack">#B3000000</color>
+    <color name="colorGray">#a4b0be</color>
+    <color name="colorLightGray">#E2E2E2</color>
+    <color name="colorDarkGray">#727272</color>
+    <color name="colorGreen">#249C57</color>
+    <color name="colorOrange">#FB8C00</color>
+    <color name="colorYellow">#ffc90d</color>
+    <color name="colorTransparentYellow">#59FB8C00</color>
+    <color name="colorDarkGreen">#218B4E</color>
+    <color name="colorRed">#ED4C67</color>
+    <color name="colorDarkRed">#D6425B</color>
+    <color name="colorSolidGray">#D6D5D6</color>
+    <color name="colorBlue">#3D5AFE</color>
+    <color name="colorGold">#E2B12A</color>
+    <color name="colorBrown">#8D6E63</color>
+    <color name="colorTransparentCream">#f7f1e3</color>
+</resources>

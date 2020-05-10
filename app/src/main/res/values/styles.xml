@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools">
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar.Bridge">
+        <!-- Customize your theme here. -->
+        <item name="android:windowContentTransitions">true</item>
+
+        <!--        <item name="android:windowSharedElementEnterTransition">-->
+        <!--            @transition/change_image_transform</item>-->
+        <!--        <item name="android:windowSharedElementExitTransition">-->
+        <!--            @transition/change_image_transform</item>-->
+
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorControlHighlight">@color/colorLightGray</item>
+        <!-- Status bar stuff. -->
+        <item name="android:statusBarColor">@android:color/white</item>
+        <item name="android:windowLightStatusBar" tools:ignore="NewApi">true</item>
+
+    </style>
+
+    <!-- TEXTVIEW -->
+
+    <style name="TextViewBoldPrimaryMedium">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:fontFamily">@font/google_sans_bold</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textSize">@dimen/font_medium</item>
+    </style>
+
+    <style name="TextViewMediumWhiteExtraSmall">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:fontFamily">@font/google_sans_medium</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/font_extra_small</item>
+    </style>
+
+    <style name="TextViewMediumWhiteMediumSmall">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:fontFamily">@font/google_sans_medium</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/font_medium_small</item>
+    </style>
+
+
+    <style name="TextViewMediumWhiteSmall">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:fontFamily">@font/google_sans_medium</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/font_small</item>
+    </style>
+
+    <style name="TextViewRegularWhiteExtraSmall">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:fontFamily">@font/google_sans_regular</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/font_extra_small</item>
+    </style>
+
+    <style name="TextViewRegularDarkGraySmall">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:fontFamily">@font/google_sans_regular</item>
+        <item name="android:textColor">@color/colorDarkGray</item>
+        <item name="android:textSize">@dimen/font_small</item>
+    </style>
+
+    <style name="TextViewRegularDarkGrayMediumSmall">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:fontFamily">@font/google_sans_regular</item>
+        <item name="android:textColor">@color/colorDarkGray</item>
+        <item name="android:textSize">@dimen/font_medium_small</item>
+    </style>
+
+    <style name="TextViewRegularDarkGrayExtraSmall">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:fontFamily">@font/google_sans_regular</item>
+        <item name="android:textColor">@color/colorDarkGray</item>
+        <item name="android:textSize">@dimen/font_extra_small</item>
+    </style>
+
+    <style name="TextViewRegularBlackSmall">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:fontFamily">@font/google_sans_regular</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/font_small</item>
+    </style>
+
+
+    <style name="TextViewRegularBlackMediumSmall">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:fontFamily">@font/google_sans_regular</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/font_medium_small</item>
+    </style>
+
+    <style name="TextViewRegularBlackExtraSmall">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:fontFamily">@font/google_sans_regular</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/font_extra_small</item>
+    </style>
+
+
+    <style name="TextViewRegularBlackExtraSuperSmall">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:fontFamily">@font/google_sans_regular</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/font_extra_super_small</item>
+    </style>
+
+    <style name="TextViewMediumBlackMedium">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:fontFamily">@font/google_sans_medium</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/font_medium</item>
+    </style>
+
+    <style name="TextViewMediumBlackSmall">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:fontFamily">@font/google_sans_medium</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/font_small</item>
+    </style>
+
+    <style name="TextViewLightDarkGrayMediumSmall">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:fontFamily">@font/google_sans_light</item>
+        <item name="android:textColor">@color/colorDarkGray</item>
+        <item name="android:textSize">@dimen/font_medium_small</item>
+    </style>
+
+    <style name="TextViewLightDarkGrayExtraSmall">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:fontFamily">@font/google_sans_light</item>
+        <item name="android:textColor">@color/colorDarkGray</item>
+        <item name="android:textSize">@dimen/font_extra_small</item>
+    </style>
+
+    <style name="TextViewLightDarkGraySmall">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:fontFamily">@font/google_sans_light</item>
+        <item name="android:textColor">@color/colorDarkGray</item>
+        <item name="android:textSize">@dimen/font_small</item>
+    </style>
+
+    <style name="TextViewLightBlackSmall">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:fontFamily">@font/google_sans_light</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/font_small</item>
+    </style>
+
+
+    <style name="TextViewLightBlackExtraMediumSmall">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:fontFamily">@font/google_sans_light</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/font_medium_small</item>
+    </style>
+
+
+    <style name="TextViewLightBlackExtraSmall">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:fontFamily">@font/google_sans_light</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/font_extra_small</item>
+    </style>
+
+
+    <style name="TextViewLightBlackExtraSuperSmall">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:fontFamily">@font/google_sans_light</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/font_extra_super_small</item>
+    </style>
+
+    <style name="TextViewMediumBlackMediumSmall">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:fontFamily">@font/google_sans_medium</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/font_medium_small</item>
+    </style>
+
+    <style name="TextViewBoldBlackMedium">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:fontFamily">@font/google_sans_bold</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/font_medium</item>
+    </style>
+
+    <style name="TextViewBoldBlackLarge">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:fontFamily">@font/google_sans_bold</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:textSize">@dimen/font_large</item>
+    </style>
+
+    <style name="TextViewBoldGoldMedium">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_centerVertical">true</item>
+        <item name="android:fontFamily">@font/google_sans_bold</item>
+        <item name="android:textColor">@color/colorGold</item>
+        <item name="android:textSize">@dimen/font_medium</item>
+    </style>
+
+
+</resources>

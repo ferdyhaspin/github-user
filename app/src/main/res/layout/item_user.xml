@@ -1,0 +1,85 @@
+<layout xmlns:tool="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.ferdyhaspin.githubuserapp.data.model.UsersItem" />
+    </data>
+
+    <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_middle"
+        app:cardCornerRadius="@dimen/spacing_middle"
+        app:cardElevation="@dimen/spacing_medium">
+
+        <LinearLayout
+            android:id="@+id/root"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="vertical">
+
+            <com.makeramen.roundedimageview.RoundedImageView
+                android:id="@+id/rivPhoto"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:layout_gravity="center_horizontal"
+                android:foregroundGravity="top"
+                android:src="@drawable/user1"
+                app:riv_corner_radius_bottom_left="@dimen/spacing_middle"
+                app:riv_corner_radius_bottom_right="@dimen/spacing_middle"
+                app:riv_corner_radius_top_left="@dimen/spacing_middle"
+                app:riv_corner_radius_top_right="@dimen/spacing_middle"
+                app:riv_tile_mode="clamp" />
+
+            <TextView
+                android:id="@+id/tvLocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_middle"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:layout_marginEnd="@dimen/spacing_middle"
+                android:layout_marginBottom="@dimen/spacing_small"
+                android:fontFamily="@font/google_sans_regular"
+                android:maxLines="1"
+                android:text="@{item.location}"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/font_extra_super_small"
+                tool:text="Bogor, Indonesia" />
+
+            <TextView
+                android:id="@+id/tvName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_middle"
+                android:layout_marginEnd="@dimen/spacing_middle"
+                android:layout_marginBottom="@dimen/spacing_small"
+                android:fontFamily="@font/google_sans_medium"
+                android:maxLines="1"
+                android:text="@{item.name}"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/font_small"
+                tool:text="Ferdi Haspi" />
+
+            <TextView
+                android:id="@+id/tvRepository"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_middle"
+                android:layout_marginEnd="@dimen/spacing_middle"
+                android:layout_marginBottom="@dimen/spacing_middle"
+                android:fontFamily="@font/google_sans_regular"
+                android:maxLines="1"
+                android:text="@{`Jumlah Repository : ` + item.repository}"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/font_extra_super_small"
+                tool:text="Jumlah Repository : 180" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+</layout>
