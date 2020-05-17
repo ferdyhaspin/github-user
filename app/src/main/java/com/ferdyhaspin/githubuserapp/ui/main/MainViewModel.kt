@@ -1,6 +1,5 @@
 package com.ferdyhaspin.githubuserapp.ui.main
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -19,21 +18,13 @@ constructor(
     private val userRepository: UserRepository
 ) : ViewModel() {
 
-    init {
-        Log.d("Test", "initialize..")
-    }
 
     val user = userRepository.searchResponse
     val searchText: LiveData<String> = MutableLiveData()
 
-    val test: LiveData<String> = MutableLiveData()
-
     fun searchUser(username: String) = Coroutines.io {
         searchText.post(username)
-        userRepository.searchUser(username)
+        userRepository.search(username)
     }
 
-    fun setTest(value: String) {
-        test.post(value)
-    }
 }

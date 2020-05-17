@@ -15,18 +15,6 @@
  */
 package com.ferdyhaspin.githubuserapp.util
 
-import java.util.concurrent.atomic.AtomicBoolean
-
 /**
  * Used as a wrapper for data that is exposed via a LiveData that represents an event.
  */
-open class Event<out T>(private val content: T) {
-
-    private val hasBeenHandled = AtomicBoolean()
-
-    fun process(block: (T) -> Unit) {
-        if (!hasBeenHandled.getAndSet(true)) {
-            block(content)
-        }
-    }
-}

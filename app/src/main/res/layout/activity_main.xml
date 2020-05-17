@@ -7,7 +7,8 @@
     android:layout_height="match_parent"
     android:background="@android:color/white"
     android:orientation="vertical"
-    tools:context=".ui.main.MainActivity">
+    tools:context=".ui.main.MainActivity"
+    tools:ignore="Overdraw">
 
     <include layout="@layout/toolbar" />
 
@@ -34,6 +35,12 @@
         <include layout="@layout/place_holder_main" />
 
     </com.facebook.shimmer.ShimmerFrameLayout>
+
+    <include
+        layout="@layout/layout_empty_data"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/refresh"

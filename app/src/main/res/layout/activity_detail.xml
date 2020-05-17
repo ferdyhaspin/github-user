@@ -18,7 +18,7 @@
 
         <include layout="@layout/toolbar" />
 
-        <ScrollView
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
@@ -33,91 +33,106 @@
                     loadImageCircle="@{viewModel.user.avatarUrl}"
                     android:layout_width="match_parent"
                     android:layout_height="350dp"
-                    android:layout_marginBottom="@dimen/spacing_large"
                     android:contentDescription="@null"
                     android:scaleType="fitCenter"
                     android:transitionName="detail_image"
                     app:riv_corner_radius_top_left="@dimen/spacing_middle"
                     app:riv_corner_radius_top_right="@dimen/spacing_middle"
-                    app:riv_tile_mode="clamp"
-                    app:srcCompat="@drawable/user1" />
+                    app:riv_tile_mode="clamp"/>
 
-                <TextView
-                    style="@style/TextViewRegularDarkGraySmall"
-                    android:layout_marginStart="@dimen/spacing_middle"
-                    android:layout_marginEnd="@dimen/spacing_middle"
-                    android:layout_marginBottom="@dimen/spacing_middle"
-                    android:text="@{viewModel.user.login}"
-                    android:textSize="@dimen/font_small"
-                    android:transitionName="detail_company"
-                    tool:text="ferdyhaspin" />
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:id="@+id/loading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="gone"
+                    app:shimmer_duration="1000">
 
-                <!--                <LinearLayout-->
-                <!--                    android:layout_width="match_parent"-->
-                <!--                    android:layout_height="wrap_content"-->
-                <!--                    android:layout_marginTop="@dimen/spacing_large"-->
-                <!--                    android:layout_marginBottom="@dimen/spacing_large"-->
-                <!--                    android:baselineAligned="false"-->
-                <!--                    android:orientation="horizontal">-->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical">
 
-                <!--                    <LinearLayout-->
-                <!--                        android:layout_width="0dp"-->
-                <!--                        android:layout_height="wrap_content"-->
-                <!--                        android:layout_weight="1"-->
-                <!--                        android:gravity="center_horizontal"-->
-                <!--                        android:orientation="vertical">-->
+                        <View
+                            android:layout_width="120dp"
+                            android:layout_height="20dp"
+                            android:layout_margin="@dimen/spacing_middle"
+                            android:background="@drawable/bg_fill_gray_rounded" />
 
-                <!--                        <TextView-->
-                <!--                            style="@style/TextViewRegularDarkGraySmall"-->
-                <!--                            android:layout_width="wrap_content"-->
-                <!--                            android:layout_height="wrap_content"-->
-                <!--                            android:layout_marginStart="@dimen/spacing_middle"-->
-                <!--                            android:layout_marginEnd="@dimen/spacing_middle"-->
-                <!--                            android:text="@{Integer.toString(viewModel.user.follower)}"-->
-                <!--                            android:textColor="@android:color/black"-->
-                <!--                            android:textSize="@dimen/font_medium"-->
-                <!--                            tool:text="48" />-->
+                        <View
+                            android:layout_width="200dp"
+                            android:layout_height="25dp"
+                            android:layout_marginStart="@dimen/spacing_middle"
+                            android:layout_marginEnd="@dimen/spacing_middle"
+                            android:layout_marginBottom="@dimen/spacing_middle"
+                            android:background="@drawable/bg_fill_gray_rounded" />
 
-
-                <!--                        <TextView-->
-                <!--                            style="@style/TextViewRegularDarkGraySmall"-->
-                <!--                            android:layout_marginStart="@dimen/spacing_middle"-->
-                <!--                            android:layout_marginEnd="@dimen/spacing_middle"-->
-                <!--                            android:text="@string/followers"-->
-                <!--                            android:textColor="@android:color/black" />-->
-
-                <!--                    </LinearLayout>-->
-
-                <!--                    <LinearLayout-->
-                <!--                        android:layout_width="0dp"-->
-                <!--                        android:layout_height="wrap_content"-->
-                <!--                        android:layout_weight="1"-->
-                <!--                        android:gravity="center_horizontal"-->
-                <!--                        android:orientation="vertical">-->
-
-                <!--                        <TextView-->
-                <!--                            style="@style/TextViewRegularDarkGraySmall"-->
-                <!--                            android:layout_marginStart="@dimen/spacing_middle"-->
-                <!--                            android:layout_marginEnd="@dimen/spacing_middle"-->
-                <!--                            android:text="@{Integer.toString(viewModel.user.following)}"-->
-                <!--                            android:textColor="@android:color/black"-->
-                <!--                            android:textSize="@dimen/font_medium"-->
-                <!--                            tool:text="48" />-->
+                        <View
+                            android:layout_width="120dp"
+                            android:layout_height="20dp"
+                            android:layout_marginStart="@dimen/spacing_middle"
+                            android:layout_marginEnd="@dimen/spacing_middle"
+                            android:layout_marginBottom="@dimen/spacing_large"
+                            android:background="@drawable/bg_fill_gray_rounded" />
+                    </LinearLayout>
 
 
-                <!--                        <TextView-->
-                <!--                            style="@style/TextViewRegularDarkGraySmall"-->
-                <!--                            android:layout_marginStart="@dimen/spacing_middle"-->
-                <!--                            android:layout_marginEnd="@dimen/spacing_middle"-->
-                <!--                            android:text="@string/following"-->
-                <!--                            android:textColor="@android:color/black" />-->
+                </com.facebook.shimmer.ShimmerFrameLayout>
 
-                <!--                    </LinearLayout>-->
+                <LinearLayout
+                    android:id="@+id/linDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
 
-                <!--                </LinearLayout>-->
+                    <TextView
+                        style="@style/TextViewRegularDarkGraySmall"
+                        android:layout_margin="@dimen/spacing_middle"
+                        android:text="@{viewModel.userDetail.login + ` | ` + viewModel.userDetail.company}"
+                        android:textSize="@dimen/font_small"
+                        android:transitionName="detail_company"
+                        tool:text="ferdyhaspin | Google, Inc." />
 
+                    <TextView
+                        style="@style/TextViewRegularBlackMediumSmall"
+                        android:layout_marginStart="@dimen/spacing_middle"
+                        android:layout_marginEnd="@dimen/spacing_middle"
+                        android:layout_marginBottom="@dimen/spacing_middle"
+                        android:text="@{viewModel.userDetail.name}"
+                        android:textSize="@dimen/font_medium"
+                        android:transitionName="detail_name"
+                        tool:text="Ferdi Haspi Nur Imanulloh" />
+
+                    <TextView
+                        style="@style/TextViewRegularDarkGraySmall"
+                        android:layout_marginStart="@dimen/spacing_middle"
+                        android:layout_marginEnd="@dimen/spacing_middle"
+                        android:layout_marginBottom="@dimen/spacing_large"
+                        android:text="@{viewModel.userDetail.location}"
+                        android:textSize="@dimen/font_small"
+                        tool:text="Bogor, Jawa Barat" />
+                </LinearLayout>
+
+                <com.google.android.material.tabs.TabLayout
+                    android:id="@+id/tabLayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="?attr/actionBarSize"
+                    app:tabGravity="fill"
+                    app:tabIndicatorColor="@color/colorDarkWhite"
+                    app:tabMode="fixed"
+                    app:tabSelectedTextColor="@android:color/black"
+                    app:tabTextAppearance="@style/TabLayoutText" />
+
+                <androidx.viewpager2.widget.ViewPager2
+                    android:id="@+id/viewPager"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false" />
             </LinearLayout>
-        </ScrollView>
 
+        </androidx.core.widget.NestedScrollView>
     </LinearLayout>
 </layout>

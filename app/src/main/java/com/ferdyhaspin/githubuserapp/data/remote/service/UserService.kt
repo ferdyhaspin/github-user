@@ -2,6 +2,7 @@ package com.ferdyhaspin.githubuserapp.data.remote.service
 
 import com.ferdyhaspin.githubuserapp.data.model.SearchResponse
 import com.ferdyhaspin.githubuserapp.data.model.User
+import com.ferdyhaspin.githubuserapp.data.model.UserDetail
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -18,13 +19,18 @@ interface UserService {
         @Query("q") username: String
     ): Response<SearchResponse>
 
+    @GET("users/{username}")
+    suspend fun detail(
+        @Path("username") username: String
+    ): Response<UserDetail>
+
     @GET("users/{username}/followers")
-    suspend fun getFollowers(
-        @Path("username") id: String
+    suspend fun followers(
+        @Path("username") username: String
     ): Response<List<User>>
 
     @GET("users/{username}/following")
-    suspend fun getFollowing(
-        @Path("username") id: String
+    suspend fun following(
+        @Path("username") username: String
     ): Response<List<User>>
 }

@@ -1,84 +1,64 @@
-package com.ferdyhaspin.githubuserapp.ui.main
+package com.ferdyhaspin.githubuserapp.ui.detail
 
 import android.os.Bundle
 import android.view.View
-import androidx.appcompat.widget.SearchView
 import androidx.core.app.ActivityOptionsCompat
+import androidx.core.os.bundleOf
 import androidx.core.util.Pair
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
-import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.ferdyhaspin.githubuserapp.R
-import com.ferdyhaspin.githubuserapp.base.BaseActivity
+import com.ferdyhaspin.githubuserapp.base.BaseFragment
 import com.ferdyhaspin.githubuserapp.data.model.Resource
 import com.ferdyhaspin.githubuserapp.data.model.User
-import com.ferdyhaspin.githubuserapp.ui.ViewModelFactory
-import com.ferdyhaspin.githubuserapp.ui.detail.DetailActivity
+import com.ferdyhaspin.githubuserapp.ui.main.MainItem
 import com.ferdyhaspin.githubuserapp.util.ext.observe
 import com.ferdyhaspin.githubuserapp.util.ext.toGone
 import com.ferdyhaspin.githubuserapp.util.ext.toVisible
 import com.ferdyhaspin.githubuserapp.util.ext.toast
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.layout_empty_data.*
-import kotlinx.android.synthetic.main.toolbar.*
-import javax.inject.Inject
+import kotlinx.android.synthetic.main.tab_detail_fragment.*
 
-class MainActivity : BaseActivity(),
-    MainItem.OnClickListener,
-    SwipeRefreshLayout.OnRefreshListener,
-    SearchView.OnQueryTextListener {
+class DetailTabFragment : BaseFragment(), MainItem.OnClickListener {
 
-    @Inject
-    lateinit var viewModelFactory: ViewModelFactory
+    private var type = 0
 
-    private lateinit var viewModel: MainViewModel
+    companion object {
+        private const val TYPE = "type"
+
+        fun newInstance(type: Int) = DetailTabFragment().apply {
+            val bundle = bundleOf().apply {
+                putInt(TYPE, type)
+            }
+            arguments = bundle
+        }
+    }
+
     private lateinit var mAdapter: GroupAdapter<ViewHolder>
+
+    override val layoutId: Int
+        get() = R.layout.tab_detail_fragment
+
+    override val activity
+        get() = requireActivity() as DetailActivity
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        initViewModel()
-        initView()
-        observe()
+        arguments?.getInt(TYPE)?.let {
+            type = it
+        }
     }
 
-    private fun initViewModel() {
-        viewModel = ViewModelProvider(this, viewModelFactory).get(MainViewModel::class.java)
-    }
-
-    private fun initView() {
-        toolbar.title = getString(R.string.app_name)
-        setSupportActionBar(toolbar)
-        refresh.setOnRefreshListener(this)
-        searchView.init()
-        setListVisibility(0)
-    }
-
-    private fun observe() {
-        observe(viewModel.user, ::updateUI)
-    }
-
-    private fun SearchView.init() {
-        setOnQueryTextListener(this@MainActivity)
-        isSubmitButtonEnabled = true
-        clearFocus()
-    }
-
-    override fun onQueryTextSubmit(query: String): Boolean {
-        viewModel.searchUser(query)
-        searchView.clearFocus()
-        return true
-    }
-
-    override fun onQueryTextChange(newText: String) = false
-
-    override fun onRefresh() {
-        viewModel.run {
-            searchText.value?.let { username ->
-                searchUser(username)
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+        activity.run {
+            val liveData = if (type == 0) {
+                viewModel.followers
+            } else {
+                viewModel.following
             }
+            observe(liveData, ::updateUI)
         }
     }
 
@@ -103,22 +83,10 @@ class MainActivity : BaseActivity(),
         }
     }
 
-    private fun setListVisibility(size: Int) {
-        if (size == 0) {
-            rvUser.toGone()
-            linEmptyData.toVisible()
-        } else {
-            rvUser.toVisible()
-            linEmptyData.toGone()
-        }
-    }
-
     private fun List<User>.parseUser() {
-        setListVisibility(size)
         val list = this@parseUser.map {
-            MainItem(it, this@MainActivity)
+            MainItem(it, this@DetailTabFragment)
         }
-
         if (::mAdapter.isInitialized) {
             mAdapter.apply {
                 clear()
@@ -130,20 +98,19 @@ class MainActivity : BaseActivity(),
                 addAll(list)
             }
             rvUser.apply {
-                layoutManager = GridLayoutManager(this@MainActivity, 2)
+                layoutManager = GridLayoutManager(requireContext(), 2)
                 adapter = mAdapter
             }
         }
     }
 
+
     private fun showLoading(isLoading: Boolean) {
         if (isLoading) {
-            refresh.isRefreshing = true
             loading.startShimmer()
             loading.toVisible()
             rvUser.toGone()
         } else {
-            refresh.isRefreshing = false
             loading.stopShimmer()
             loading.toGone()
             rvUser.toVisible()
@@ -151,7 +118,17 @@ class MainActivity : BaseActivity(),
     }
 
     private fun showError(message: String) {
-        toast(message)
+        activity.toast(message)
+    }
+
+    private fun setListVisibility(size: Int) {
+        if (size == 0) {
+            rvUser.toGone()
+            linEmptyData.toVisible()
+        } else {
+            rvUser.toVisible()
+            linEmptyData.toGone()
+        }
     }
 
     override fun onItemClickListener(vararg view: View, user: User) {
@@ -160,11 +137,11 @@ class MainActivity : BaseActivity(),
 
         val activityOptionsCompat =
             ActivityOptionsCompat.makeSceneTransitionAnimation(
-                this,
+                activity,
                 image,
                 name
             )
-        val intent = DetailActivity.newIntent(this, user)
+        val intent = DetailActivity.newIntent(activity, user)
         startActivity(intent, activityOptionsCompat.toBundle())
     }
 }

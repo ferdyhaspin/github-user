@@ -4,8 +4,14 @@
 
 package com.ferdyhaspin.githubuserapp.di.module.builder
 
+import com.ferdyhaspin.githubuserapp.ui.detail.DetailTabFragment
 import dagger.Module
+import dagger.android.ContributesAndroidInjector
 
 @Suppress("unused")
 @Module
-abstract class FragmentModuleBuilder
+abstract class FragmentModuleBuilder {
+
+    @ContributesAndroidInjector
+    abstract fun contributeDetailTabFragment(): DetailTabFragment
+}

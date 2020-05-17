@@ -8,6 +8,7 @@ import com.ferdyhaspin.githubuserapp.R
 import com.ferdyhaspin.githubuserapp.data.model.Error
 import com.ferdyhaspin.githubuserapp.data.model.Resource
 import com.ferdyhaspin.githubuserapp.data.model.User
+import com.ferdyhaspin.githubuserapp.data.model.UserDetail
 import com.ferdyhaspin.githubuserapp.data.remote.config.SafeApiRequest
 import com.ferdyhaspin.githubuserapp.data.remote.config.ServiceGenerator
 import com.ferdyhaspin.githubuserapp.data.remote.service.UserService
@@ -27,6 +28,7 @@ constructor(
 ) : SafeApiRequest() {
 
     val searchResponse: LiveData<Resource<List<User>>> = MutableLiveData()
+    val userDetailResponse: LiveData<Resource<UserDetail>> = MutableLiveData()
     val followersResponse: LiveData<Resource<List<User>>> = MutableLiveData()
     val followingResponse: LiveData<Resource<List<User>>> = MutableLiveData()
 
@@ -35,7 +37,7 @@ constructor(
         BuildConfig.BASE_URL
     )
 
-    suspend fun searchUser(username: String) = withContext(Dispatchers.IO) {
+    suspend fun search(username: String) = withContext(Dispatchers.IO) {
         searchResponse.post(Resource.Loading())
         try {
             val response = apiRequest {
@@ -54,11 +56,24 @@ constructor(
         }
     }
 
+    suspend fun detail(username: String) = withContext(Dispatchers.IO) {
+        userDetailResponse.post(Resource.Loading())
+        try {
+            val response = apiRequest {
+                service.detail(username)
+            }
+            userDetailResponse.post(Resource.Success(response))
+        } catch (e: Exception) {
+            e.printStackTrace()
+            userDetailResponse.post(Resource.DataError(Error(e)))
+        }
+    }
+
     suspend fun getFollowers(username: String) = withContext(Dispatchers.IO) {
         followersResponse.post(Resource.Loading())
         try {
             val response = apiRequest {
-                service.getFollowers(username)
+                service.followers(username)
             }
 
             if (response.isNotEmpty()) {
@@ -77,7 +92,7 @@ constructor(
         followingResponse.post(Resource.Loading())
         try {
             val response = apiRequest {
-                service.getFollowing(username)
+                service.following(username)
             }
 
             if (response.isNotEmpty()) {

@@ -65,6 +65,7 @@ dependencies {
 
     //Data Binding
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
     kapt "com.android.databinding:compiler:3.1.4"
 
     //Retrofit
