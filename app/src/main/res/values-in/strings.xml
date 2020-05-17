@@ -6,4 +6,7 @@
     <string name="followers">Pengikut</string>
     <string name="following">Mengikuti</string>
     <string name="repository">Repository</string>
+    <string name="no_data">Tidak ada data</string>
+    <string name="hint_search">Cari berdasarkan username</string>
+    <string name="title_detail">Detail</string>
 </resources>

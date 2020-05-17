@@ -2,7 +2,7 @@ package com.ferdyhaspin.githubuserapp.ui.main
 
 import android.view.View
 import com.ferdyhaspin.githubuserapp.R
-import com.ferdyhaspin.githubuserapp.data.model.UsersItem
+import com.ferdyhaspin.githubuserapp.data.model.User
 import com.ferdyhaspin.githubuserapp.databinding.ItemUserBinding
 import com.xwray.groupie.databinding.BindableItem
 
@@ -11,7 +11,7 @@ import com.xwray.groupie.databinding.BindableItem
  * Copyright (c) 2020 Github User Apps All rights reserved.
  */
 class MainItem(
-    private val user: UsersItem,
+    private val user: User,
     private val callback: OnClickListener
 ) : BindableItem<ItemUserBinding>() {
 
@@ -21,15 +21,14 @@ class MainItem(
         viewBinding.item = user
 
         val image = viewBinding.rivPhoto
-        val name = viewBinding.tvName as View
-        val company = viewBinding.tvCompany as View
+        val name = viewBinding.tvName
 
         viewBinding.root.setOnClickListener {
-            callback.onItemClickListener(image, name, company, user = user)
+            callback.onItemClickListener(image, name, user = user)
         }
     }
 
     interface OnClickListener {
-        fun onItemClickListener(vararg view: View, user: UsersItem)
+        fun onItemClickListener(vararg view: View, user: User)
     }
 }

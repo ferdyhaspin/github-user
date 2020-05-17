@@ -1,6 +1,7 @@
 package com.ferdyhaspin.githubuserapp.data.model
 
 import android.os.Parcelable
+import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
 /**
@@ -10,17 +11,55 @@ import kotlinx.android.parcel.Parcelize
 
 @Parcelize
 data class User(
-    val users: List<UsersItem>
-) : Parcelable
+    @SerializedName("gists_url")
+    val gistsUrl: String,
 
-@Parcelize
-data class UsersItem(
-	val follower: Int,
-	val following: Int,
-	val name: String,
-	val company: String,
-	val location: String,
-	val avatar: String,
-	val repository: Int,
-	val username: String
-): Parcelable
+    @SerializedName("repos_url")
+    val reposUrl: String,
+
+    @SerializedName("following_url")
+    val followingUrl: String,
+
+    @SerializedName("starred_url")
+    val starredUrl: String,
+
+    val login: String,
+
+    @SerializedName("followers_url")
+    val followersUrl: String,
+
+    val type: String,
+
+    val url: String,
+
+    @SerializedName("subscriptions_url")
+    val subscriptionsUrl: String,
+
+    val score: Double,
+
+    @SerializedName("received_events_url")
+    val receivedEventsUrl: String,
+
+    @SerializedName("avatar_url")
+    val avatarUrl: String,
+
+    @SerializedName("events_url")
+    val eventsUrl: String,
+
+    @SerializedName("html_url")
+    val htmlUrl: String,
+
+    @SerializedName("site_admin")
+    val siteAdmin: Boolean,
+
+    val id: Int,
+
+    @SerializedName("gravatar_id")
+    val gravatarId: String,
+
+    @SerializedName("node_id")
+    val nodeId: String,
+
+    @SerializedName("organizations_url")
+    val organizationsUrl: String
+) : Parcelable

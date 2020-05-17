@@ -24,10 +24,6 @@ fun View.toGone() {
     this.visibility = View.GONE
 }
 
-fun View.toInvisible() {
-    this.visibility = View.INVISIBLE
-}
-
 fun ImageView.loadImageCircle(url: String) =
     Glide.with(this)
         .setDefaultRequestOptions(
@@ -39,15 +35,3 @@ fun ImageView.loadImageCircle(url: String) =
         )
         .load(url)
         .into(this)
-
-fun ImageView.loadLocal(name: String?) {
-    Glide.with(this)
-        .load(
-            resources.getIdentifier(
-                name,
-                "drawable",
-                this.context.packageName
-            )
-        )
-        .into(this)
-}

@@ -30,7 +30,7 @@
 
                 <com.makeramen.roundedimageview.RoundedImageView
                     android:id="@+id/rivPhoto"
-                    imageDrawable="@{viewModel.user.avatar}"
+                    loadImageCircle="@{viewModel.user.avatarUrl}"
                     android:layout_width="match_parent"
                     android:layout_height="350dp"
                     android:layout_marginBottom="@dimen/spacing_large"
@@ -47,118 +47,74 @@
                     android:layout_marginStart="@dimen/spacing_middle"
                     android:layout_marginEnd="@dimen/spacing_middle"
                     android:layout_marginBottom="@dimen/spacing_middle"
-                    android:text="@{viewModel.user.username + ` | ` + viewModel.user.company}"
+                    android:text="@{viewModel.user.login}"
                     android:textSize="@dimen/font_small"
                     android:transitionName="detail_company"
-                    tool:text="ferdyhaspin | Google, Inc." />
+                    tool:text="ferdyhaspin" />
 
-                <TextView
-                    style="@style/TextViewRegularBlackMediumSmall"
-                    android:layout_marginStart="@dimen/spacing_middle"
-                    android:layout_marginEnd="@dimen/spacing_middle"
-                    android:layout_marginBottom="@dimen/spacing_middle"
-                    android:text="@{viewModel.user.name}"
-                    android:textSize="@dimen/font_medium"
-                    android:transitionName="detail_name"
-                    tool:text="Ferdi Haspi Nur Imanulloh" />
+                <!--                <LinearLayout-->
+                <!--                    android:layout_width="match_parent"-->
+                <!--                    android:layout_height="wrap_content"-->
+                <!--                    android:layout_marginTop="@dimen/spacing_large"-->
+                <!--                    android:layout_marginBottom="@dimen/spacing_large"-->
+                <!--                    android:baselineAligned="false"-->
+                <!--                    android:orientation="horizontal">-->
 
-                <TextView
-                    style="@style/TextViewRegularDarkGraySmall"
-                    android:layout_marginStart="@dimen/spacing_middle"
-                    android:layout_marginEnd="@dimen/spacing_middle"
-                    android:layout_marginBottom="@dimen/spacing_large"
-                    android:text="@{viewModel.user.location}"
-                    android:textSize="@dimen/font_small"
-                    tool:text="Bogor, Jawa Barat" />
+                <!--                    <LinearLayout-->
+                <!--                        android:layout_width="0dp"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_weight="1"-->
+                <!--                        android:gravity="center_horizontal"-->
+                <!--                        android:orientation="vertical">-->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/spacing_large"
-                    android:layout_marginBottom="@dimen/spacing_large"
-                    android:baselineAligned="false"
-                    android:orientation="horizontal">
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center_horizontal"
-                        android:orientation="vertical">
-
-                        <TextView
-                            style="@style/TextViewRegularDarkGraySmall"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/spacing_middle"
-                            android:layout_marginEnd="@dimen/spacing_middle"
-                            android:text="@{Integer.toString(viewModel.user.follower)}"
-                            android:textColor="@android:color/black"
-                            android:textSize="@dimen/font_medium"
-                            tool:text="48" />
+                <!--                        <TextView-->
+                <!--                            style="@style/TextViewRegularDarkGraySmall"-->
+                <!--                            android:layout_width="wrap_content"-->
+                <!--                            android:layout_height="wrap_content"-->
+                <!--                            android:layout_marginStart="@dimen/spacing_middle"-->
+                <!--                            android:layout_marginEnd="@dimen/spacing_middle"-->
+                <!--                            android:text="@{Integer.toString(viewModel.user.follower)}"-->
+                <!--                            android:textColor="@android:color/black"-->
+                <!--                            android:textSize="@dimen/font_medium"-->
+                <!--                            tool:text="48" />-->
 
 
-                        <TextView
-                            style="@style/TextViewRegularDarkGraySmall"
-                            android:layout_marginStart="@dimen/spacing_middle"
-                            android:layout_marginEnd="@dimen/spacing_middle"
-                            android:text="@string/followers"
-                            android:textColor="@android:color/black" />
+                <!--                        <TextView-->
+                <!--                            style="@style/TextViewRegularDarkGraySmall"-->
+                <!--                            android:layout_marginStart="@dimen/spacing_middle"-->
+                <!--                            android:layout_marginEnd="@dimen/spacing_middle"-->
+                <!--                            android:text="@string/followers"-->
+                <!--                            android:textColor="@android:color/black" />-->
 
-                    </LinearLayout>
+                <!--                    </LinearLayout>-->
 
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center_horizontal"
-                        android:orientation="vertical">
+                <!--                    <LinearLayout-->
+                <!--                        android:layout_width="0dp"-->
+                <!--                        android:layout_height="wrap_content"-->
+                <!--                        android:layout_weight="1"-->
+                <!--                        android:gravity="center_horizontal"-->
+                <!--                        android:orientation="vertical">-->
 
-                        <TextView
-                            style="@style/TextViewRegularDarkGraySmall"
-                            android:layout_marginStart="@dimen/spacing_middle"
-                            android:layout_marginEnd="@dimen/spacing_middle"
-                            android:text="@{Integer.toString(viewModel.user.following)}"
-                            android:textColor="@android:color/black"
-                            android:textSize="@dimen/font_medium"
-                            tool:text="48" />
-
-
-                        <TextView
-                            style="@style/TextViewRegularDarkGraySmall"
-                            android:layout_marginStart="@dimen/spacing_middle"
-                            android:layout_marginEnd="@dimen/spacing_middle"
-                            android:text="@string/following"
-                            android:textColor="@android:color/black" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center_horizontal"
-                        android:orientation="vertical">
-
-                        <TextView
-                            style="@style/TextViewRegularDarkGraySmall"
-                            android:layout_marginStart="@dimen/spacing_middle"
-                            android:layout_marginEnd="@dimen/spacing_middle"
-                            android:text="@{Integer.toString(viewModel.user.repository)}"
-                            android:textColor="@android:color/black"
-                            android:textSize="@dimen/font_medium"
-                            tool:text="48" />
+                <!--                        <TextView-->
+                <!--                            style="@style/TextViewRegularDarkGraySmall"-->
+                <!--                            android:layout_marginStart="@dimen/spacing_middle"-->
+                <!--                            android:layout_marginEnd="@dimen/spacing_middle"-->
+                <!--                            android:text="@{Integer.toString(viewModel.user.following)}"-->
+                <!--                            android:textColor="@android:color/black"-->
+                <!--                            android:textSize="@dimen/font_medium"-->
+                <!--                            tool:text="48" />-->
 
 
-                        <TextView
-                            style="@style/TextViewRegularDarkGraySmall"
-                            android:layout_marginStart="@dimen/spacing_middle"
-                            android:layout_marginEnd="@dimen/spacing_middle"
-                            android:text="@string/repository"
-                            android:textColor="@android:color/black" />
+                <!--                        <TextView-->
+                <!--                            style="@style/TextViewRegularDarkGraySmall"-->
+                <!--                            android:layout_marginStart="@dimen/spacing_middle"-->
+                <!--                            android:layout_marginEnd="@dimen/spacing_middle"-->
+                <!--                            android:text="@string/following"-->
+                <!--                            android:textColor="@android:color/black" />-->
 
-                    </LinearLayout>
-                </LinearLayout>
+                <!--                    </LinearLayout>-->
+
+                <!--                </LinearLayout>-->
 
             </LinearLayout>
         </ScrollView>

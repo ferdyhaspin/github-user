@@ -4,7 +4,7 @@
 
         <variable
             name="item"
-            type="com.ferdyhaspin.githubuserapp.data.model.UsersItem" />
+            type="com.ferdyhaspin.githubuserapp.data.model.User" />
     </data>
 
     <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
@@ -15,58 +15,47 @@
         app:cardCornerRadius="@dimen/spacing_middle"
         app:cardElevation="@dimen/spacing_medium">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/root"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
-            android:focusable="true"
-            android:orientation="vertical">
+            android:focusable="true">
 
             <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/rivPhoto"
+                loadImageCircle="@{item.avatarUrl}"
                 android:layout_width="match_parent"
                 android:layout_height="160dp"
                 android:layout_gravity="center_horizontal"
                 android:foregroundGravity="top"
-                imageLocal="@{item.avatar}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
                 app:riv_corner_radius_bottom_left="@dimen/spacing_middle"
                 app:riv_corner_radius_bottom_right="@dimen/spacing_middle"
                 app:riv_corner_radius_top_left="@dimen/spacing_middle"
                 app:riv_corner_radius_top_right="@dimen/spacing_middle"
                 app:riv_tile_mode="clamp" />
 
-            <TextView
-                android:id="@+id/tvCompany"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_middle"
-                android:layout_marginTop="@dimen/spacing_large"
-                android:layout_marginEnd="@dimen/spacing_middle"
-                android:layout_marginBottom="@dimen/spacing_small"
-                android:fontFamily="@font/google_sans_regular"
-                android:maxLines="1"
-                android:text="@{item.company}"
-                android:textColor="@android:color/black"
-                android:textSize="@dimen/font_extra_super_small"
-                tool:text="Google, Inc." />
 
             <TextView
                 android:id="@+id/tvName"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_middle"
-                android:layout_marginEnd="@dimen/spacing_middle"
-                android:layout_marginBottom="@dimen/spacing_small"
+                android:layout_margin="@dimen/spacing_large"
                 android:fontFamily="@font/google_sans_medium"
-                android:maxLines="1"
-                android:text="@{item.name}"
+                android:text="@{item.login}"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/font_small"
-                tool:text="Ferdi Haspi" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rivPhoto"
+                tool:text="ferdyhaspin" />
 
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.cardview.widget.CardView>
 </layout>

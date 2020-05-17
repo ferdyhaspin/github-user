@@ -11,13 +11,25 @@
 
     <include layout="@layout/toolbar" />
 
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_margin="@dimen/spacing_middle"
+        android:background="@android:color/white"
+        android:elevation="@dimen/elevation"
+        android:padding="@dimen/spacing_xmedium"
+        app:iconifiedByDefault="false"
+        app:queryHint="@string/hint_search" />
+
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/loading"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:orientation="vertical"
-        app:duration="10">
+        android:visibility="gone"
+        app:shimmer_duration="1000">
 
         <include layout="@layout/place_holder_main" />
 
@@ -31,11 +43,11 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvUser"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:clipToPadding="false"
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-            tools:itemCount="1"
+            tools:itemCount="5"
             tools:listitem="@layout/item_user" />
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
