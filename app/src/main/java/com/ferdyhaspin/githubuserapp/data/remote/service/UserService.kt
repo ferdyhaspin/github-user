@@ -8,8 +8,8 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 /**
- * Created by ferdyhaspin & ilhamelmujib on 18/05/20.
- * Copyright (c) 2020 Bank Syariah Mandiri - Super Apps All rights reserved.
+ * Created by ferdyhaspin  on 18/05/20.
+ * Copyright (c) 2020 Github User Apps All rights reserved.
  */
 interface UserService {
 

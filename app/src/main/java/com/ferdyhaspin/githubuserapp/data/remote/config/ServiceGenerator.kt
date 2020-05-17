@@ -15,8 +15,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 /**
- * Created by ferdyhaspin & ilhamelmujib on 06/02/20.
- * Copyright (c) 2020 Bank Syariah Mandiri - Super Apps All rights reserved.
+ * Created by ferdyhaspin  on 06/02/20.
+ * Copyright (c) 2020 Github User Apps All rights reserved.
  */
 
 //Network constants
