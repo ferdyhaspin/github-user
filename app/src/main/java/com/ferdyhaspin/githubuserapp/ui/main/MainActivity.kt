@@ -6,6 +6,8 @@ import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.util.Pair
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.ferdyhaspin.githubuserapp.R
@@ -23,7 +25,6 @@ import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.toolbar.*
-import okhttp3.internal.notify
 import javax.inject.Inject
 
 class MainActivity : BaseActivity(),
@@ -34,23 +35,19 @@ class MainActivity : BaseActivity(),
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
-    @Inject
-    lateinit var viewModel: MainViewModel
-
+    private lateinit var viewModel: MainViewModel
     private lateinit var mAdapter: GroupAdapter<ViewHolder>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        initViewModel()
         initView()
         observe()
     }
 
-    private fun observe() {
-        observe(viewModel.user, ::updateUI)
-        observe(viewModel.searchText) {
-            searchView.setQuery(it, false)
-        }
+    private fun initViewModel() {
+        viewModel = ViewModelProvider(this,viewModelFactory).get(MainViewModel::class.java)
     }
 
     private fun initView() {
@@ -58,6 +55,10 @@ class MainActivity : BaseActivity(),
         setSupportActionBar(toolbar)
         refresh.setOnRefreshListener(this)
         searchView.init()
+    }
+
+    private fun observe() {
+        observe(viewModel.user, ::updateUI)
     }
 
     private fun SearchView.init() {
@@ -68,6 +69,7 @@ class MainActivity : BaseActivity(),
 
     override fun onQueryTextSubmit(query: String): Boolean {
         viewModel.searchUser(query)
+        viewModel.setTest(query)
         searchView.clearFocus()
         return true
     }
@@ -103,7 +105,7 @@ class MainActivity : BaseActivity(),
             mAdapter.apply {
                 clear()
                 addAll(list)
-                notify()
+                notifyItemRangeChanged(0, list.size)
             }
         } else {
             mAdapter = GroupAdapter<ViewHolder>().apply {

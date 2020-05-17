@@ -2,12 +2,15 @@ package com.ferdyhaspin.githubuserapp.ui.detail
 
 import android.os.Bundle
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.ViewModelProvider
 import com.ferdyhaspin.githubuserapp.R
 import com.ferdyhaspin.githubuserapp.base.BaseActivity
 import com.ferdyhaspin.githubuserapp.data.model.User
 import com.ferdyhaspin.githubuserapp.databinding.ActivityDetailBinding
 import com.ferdyhaspin.githubuserapp.ui.ViewModelFactory
 import com.ferdyhaspin.githubuserapp.util.EXTRA_USER
+import com.ferdyhaspin.githubuserapp.util.ext.observe
+import com.ferdyhaspin.githubuserapp.util.ext.toast
 import kotlinx.android.synthetic.main.toolbar.*
 import javax.inject.Inject
 
@@ -17,8 +20,7 @@ class DetailActivity : BaseActivity() {
     @Inject
     lateinit var viewModelFactory: ViewModelFactory
 
-    @Inject
-    lateinit var viewModel: DetailViewModel
+    private lateinit var viewModel: DetailViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +32,7 @@ class DetailActivity : BaseActivity() {
     private fun initViewModel() {
         val binding: ActivityDetailBinding =
             DataBindingUtil.setContentView(this, R.layout.activity_detail)
+        viewModel = ViewModelProvider(this, viewModelFactory).get(DetailViewModel::class.java)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
     }
