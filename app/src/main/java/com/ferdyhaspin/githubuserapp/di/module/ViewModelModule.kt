@@ -7,6 +7,7 @@ package com.ferdyhaspin.githubuserapp.di.module
 import androidx.lifecycle.ViewModel
 import com.ferdyhaspin.githubuserapp.di.scope.ViewModelKey
 import com.ferdyhaspin.githubuserapp.ui.detail.DetailViewModel
+import com.ferdyhaspin.githubuserapp.ui.favorite.FavoriteViewModel
 import com.ferdyhaspin.githubuserapp.ui.main.MainViewModel
 import dagger.Binds
 import dagger.Module
@@ -25,5 +26,10 @@ abstract class ViewModelModule {
     @IntoMap
     @ViewModelKey(DetailViewModel::class)
     abstract fun bindDetailViewModel(viewModel: DetailViewModel): ViewModel
+
+    @Binds
+    @IntoMap
+    @ViewModelKey(FavoriteViewModel::class)
+    abstract fun bindFavoriteViewModel(viewModel: FavoriteViewModel): ViewModel
 
 }

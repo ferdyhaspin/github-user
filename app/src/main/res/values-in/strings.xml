@@ -5,8 +5,9 @@
     <string name="no_data">Tidak ada data</string>
     <string name="hint_search">Cari berdasarkan username</string>
     <string name="msg_empty_data">Tidak ada data</string>
-    <string name="favorite">favorite</string>
+    <string name="favorite">Favorit</string>
     <string name="notification">notification</string>
     <string name="success_deleted">Favorit berhasil dihapus</string>
     <string name="success_added">Favorit berhasil ditambahkan</string>
+    <string name="delete">hapus</string>
 </resources>

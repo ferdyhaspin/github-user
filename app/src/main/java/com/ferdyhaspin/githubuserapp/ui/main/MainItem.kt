@@ -4,6 +4,7 @@ import android.view.View
 import com.ferdyhaspin.githubuserapp.R
 import com.ferdyhaspin.githubuserapp.data.model.User
 import com.ferdyhaspin.githubuserapp.databinding.ItemUserBinding
+import com.ferdyhaspin.githubuserapp.util.ext.toVisible
 import com.xwray.groupie.databinding.BindableItem
 
 /**
@@ -12,23 +13,40 @@ import com.xwray.groupie.databinding.BindableItem
  */
 class MainItem(
     private val user: User,
-    private val callback: OnClickListener
+    private val callback: OnClickListener,
+    private val isFavoriteItem: Boolean = false,
+    private val favoriteCallback: OnFavoriteClick? = null
 ) : BindableItem<ItemUserBinding>() {
 
     override fun getLayout() = R.layout.item_user
 
     override fun bind(viewBinding: ItemUserBinding, position: Int) {
-        viewBinding.item = user
+        viewBinding.apply {
+            item = user
 
-        val image = viewBinding.rivPhoto
-        val name = viewBinding.tvName
+            val image = rivPhoto
+            val name = tvName
 
-        viewBinding.root.setOnClickListener {
-            callback.onItemClickListener(image, name, user = user)
+            root.setOnClickListener {
+                callback.onItemClickListener(image, name, user = user)
+            }
+
+            if (isFavoriteItem) {
+                viewBinding.btnDelete.apply {
+                    toVisible()
+                    setOnClickListener {
+                        favoriteCallback?.onDeleteClickListener(user)
+                    }
+                }
+            }
         }
     }
 
     interface OnClickListener {
         fun onItemClickListener(vararg view: View, user: User)
+    }
+
+    interface OnFavoriteClick {
+        fun onDeleteClickListener(user: User)
     }
 }

@@ -21,15 +21,17 @@
             android:layout_height="wrap_content"
             android:background="?attr/selectableItemBackgroundBorderless"
             android:clickable="true"
-            android:focusable="true">
+            android:focusable="true"
+            android:paddingBottom="@dimen/spacing_large">
 
             <com.makeramen.roundedimageview.RoundedImageView
                 android:id="@+id/rivPhoto"
                 loadImageCircle="@{item.avatarUrl}"
                 android:layout_width="match_parent"
-                android:layout_height="160dp"
+                android:layout_height="180dp"
                 android:layout_gravity="center_horizontal"
                 android:foregroundGravity="top"
+                android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
@@ -39,21 +41,36 @@
                 app:riv_corner_radius_top_right="@dimen/spacing_middle"
                 app:riv_tile_mode="clamp" />
 
-
             <TextView
                 android:id="@+id/tvName"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="@dimen/spacing_large"
+                android:layout_marginStart="@dimen/spacing_large"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:layout_marginEnd="@dimen/spacing_large"
                 android:fontFamily="@font/google_sans_medium"
                 android:text="@{item.login}"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/font_small"
-                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintBottom_toTopOf="@id/btnDelete"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/rivPhoto"
                 tool:text="ferdyhaspin" />
+
+            <Button
+                android:id="@+id/btnDelete"
+                style="@style/ButtonPrimaryRoundedExtra"
+                android:layout_marginStart="@dimen/spacing_large"
+                android:layout_marginTop="@dimen/spacing_large"
+                android:layout_marginEnd="@dimen/spacing_large"
+                android:fontFamily="@font/google_sans_medium"
+                android:text="@string/delete"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvName" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
