@@ -1,6 +1,8 @@
 package com.ferdyhaspin.githubuserapp.ui.main
 
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import androidx.appcompat.widget.SearchView
 import androidx.core.app.ActivityOptionsCompat
@@ -166,5 +168,18 @@ class MainActivity : BaseActivity(),
             )
         val intent = DetailActivity.newIntent(this, user)
         startActivity(intent, activityOptionsCompat.toBundle())
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.item_favorite -> toast("Favorite")
+            R.id.item_notification -> toast("Notification")
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

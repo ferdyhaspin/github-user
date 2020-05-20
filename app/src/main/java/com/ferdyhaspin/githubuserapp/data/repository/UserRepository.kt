@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.ferdyhaspin.githubuserapp.BuildConfig
 import com.ferdyhaspin.githubuserapp.R
+import com.ferdyhaspin.githubuserapp.data.local.UserDao
 import com.ferdyhaspin.githubuserapp.data.model.Error
 import com.ferdyhaspin.githubuserapp.data.model.Resource
 import com.ferdyhaspin.githubuserapp.data.model.User
@@ -24,13 +25,17 @@ import javax.inject.Inject
 class UserRepository @Inject
 constructor(
     serviceGenerator: ServiceGenerator,
-    private val context: Context
+    private val context: Context,
+    private val userDao: UserDao
 ) : SafeApiRequest() {
 
     val searchResponse: LiveData<Resource<List<User>>> = MutableLiveData()
     val userDetailResponse: LiveData<Resource<UserDetail>> = MutableLiveData()
     val followersResponse: LiveData<Resource<List<User>>> = MutableLiveData()
     val followingResponse: LiveData<Resource<List<User>>> = MutableLiveData()
+
+    val listFavorite: LiveData<List<User>> = MutableLiveData()
+    val isFavorite: LiveData<Boolean> = MutableLiveData()
 
     private val service = serviceGenerator.createService(
         UserService::class.java,
@@ -105,6 +110,25 @@ constructor(
             e.printStackTrace()
             followingResponse.post(Resource.DataError(Error(e)))
         }
+    }
+
+    suspend fun addFavorite(user: User) {
+        userDao.insert(user)
+    }
+
+    suspend fun loadFavorite() {
+        val list = userDao.selectAll()
+        listFavorite.post(list)
+    }
+
+    suspend fun loadFavoriteById(id: Int) {
+        userDao.selectById(id).let { user ->
+            isFavorite.post(user != null)
+        }
+    }
+
+    suspend fun deleteFavorite(user: User) {
+        userDao.delete(user)
     }
 
 }

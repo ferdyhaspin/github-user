@@ -13,8 +13,16 @@ android {
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments = [
+                        "room.schemaLocation"  : "$projectDir/schemas".toString(),
+                        "room.incremental"     : "true",
+                        "room.expandProjection": "true"]
+            }
+        }
     }
 
     buildTypes {
@@ -90,10 +98,10 @@ dependencies {
     implementation "com.xwray:groupie-kotlin-android-extensions:$groupie_version"
     implementation "com.xwray:groupie-databinding:$groupie_version"
 
-//    //room
-//    implementation "androidx.room:room-runtime:$room_version"
-//    implementation "androidx.room:room-ktx:$room_version"
-//    kapt "androidx.room:room-compiler:$room_version"
+    //room
+    implementation "androidx.room:room-runtime:$room_version"
+    implementation "androidx.room:room-ktx:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
 
     //dagger
     api "com.google.dagger:dagger:$dagger_version"

@@ -3,6 +3,8 @@ package com.ferdyhaspin.githubuserapp.ui.detail
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -25,6 +27,8 @@ import javax.inject.Inject
 
 
 class DetailActivity : BaseActivity() {
+
+    private lateinit var menuItem: MenuItem
 
     companion object {
         private const val EXTRA_USER = "user"
@@ -100,6 +104,7 @@ class DetailActivity : BaseActivity() {
 
     private fun observe() {
         observe(viewModel.userDetailResponse, ::updateUI)
+        observe(viewModel.isFavorite, ::setFavorite)
     }
 
     private fun updateUI(source: Resource<UserDetail>) {
@@ -136,6 +141,49 @@ class DetailActivity : BaseActivity() {
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        menuInflater.inflate(R.menu.detail_menu, menu)
+        menuItem = menu.findItem(R.id.item_favorite)
+        loadFavorite()
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    private fun loadFavorite() {
+        viewModel.loadUserFavorite(viewModel.user.value?.id)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.item_favorite -> {
+                viewModel.isFavorite.value?.let { isFavorite ->
+                    viewModel.user.value?.let {
+                        if (isFavorite) {
+                            viewModel.deleteFavorite(it)
+                            toast(getString(R.string.success_deleted))
+                        } else {
+                            viewModel.addFavorite(it)
+                            toast(getString(R.string.success_added))
+                        }
+                    }
+                }
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun setFavorite(isFavorite: Boolean) {
+        menuItem.setFavoriteIcon(isFavorite)
+    }
+
+    private fun MenuItem.setFavoriteIcon(isFavorite: Boolean) {
+        val icon = if (isFavorite) {
+            R.drawable.ic_favorite
+        } else {
+            R.drawable.ic_favorite_border
+        }
+        setIcon(icon)
     }
 
 }

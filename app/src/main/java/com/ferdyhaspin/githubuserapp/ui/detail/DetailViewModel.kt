@@ -6,6 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.ferdyhaspin.githubuserapp.data.model.User
 import com.ferdyhaspin.githubuserapp.data.model.UserDetail
 import com.ferdyhaspin.githubuserapp.data.repository.UserRepository
+import com.ferdyhaspin.githubuserapp.util.Coroutines
 import com.ferdyhaspin.githubuserapp.util.ext.post
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -27,7 +28,9 @@ constructor(
     val followers = userRepository.followersResponse
     val following = userRepository.followingResponse
 
-    fun setUser(usersItem: User) {
+    val isFavorite = userRepository.isFavorite
+
+    fun setUser(usersItem: User) = Coroutines.io {
         user.post(usersItem)
     }
 
@@ -45,5 +48,19 @@ constructor(
         launch {
             userRepository.getFollowing(username)
         }
+    }
+
+    fun loadUserFavorite(id: Int?) = Coroutines.io {
+        id?.let { userRepository.loadFavoriteById(it) }
+    }
+
+    fun addFavorite(user: User) = Coroutines.io {
+        userRepository.addFavorite(user)
+        loadUserFavorite(user.id)
+    }
+
+    fun deleteFavorite(user: User) = Coroutines.io {
+        userRepository.deleteFavorite(user)
+        loadUserFavorite(user.id)
     }
 }

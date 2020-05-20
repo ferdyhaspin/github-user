@@ -1,6 +1,8 @@
 package com.ferdyhaspin.githubuserapp.data.model
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.google.gson.annotations.SerializedName
 import kotlinx.android.parcel.Parcelize
 
@@ -9,8 +11,13 @@ import kotlinx.android.parcel.Parcelize
  * Copyright (c) 2020 Github User Apps All rights reserved.
  */
 
+@Entity(tableName = "user")
 @Parcelize
 data class User(
+
+    @PrimaryKey
+    val id: Int,
+
     @SerializedName("gists_url")
     val gistsUrl: String,
 
@@ -51,8 +58,6 @@ data class User(
 
     @SerializedName("site_admin")
     val siteAdmin: Boolean,
-
-    val id: Int,
 
     @SerializedName("gravatar_id")
     val gravatarId: String,

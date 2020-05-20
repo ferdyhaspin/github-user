@@ -38,7 +38,7 @@
                     android:transitionName="detail_image"
                     app:riv_corner_radius_top_left="@dimen/spacing_middle"
                     app:riv_corner_radius_top_right="@dimen/spacing_middle"
-                    app:riv_tile_mode="clamp"/>
+                    app:riv_tile_mode="clamp" />
 
                 <com.facebook.shimmer.ShimmerFrameLayout
                     android:id="@+id/loading"
@@ -130,6 +130,7 @@
                     android:id="@+id/viewPager"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:descendantFocusability="blocksDescendants"
                     android:nestedScrollingEnabled="false" />
             </LinearLayout>
 

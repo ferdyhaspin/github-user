@@ -5,4 +5,8 @@
     <string name="no_data">No Data</string>
     <string name="hint_search">Search by username</string>
     <string name="msg_empty_data">Empty Data</string>
+    <string name="favorite">favorite</string>
+    <string name="notification">notification</string>
+    <string name="success_deleted">Favorite successfully deleted</string>
+    <string name="success_added">Favorite successfully added</string>
 </resources>
