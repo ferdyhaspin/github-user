@@ -1,2 +1,2 @@
 rootProject.name='Github User App'
-include ':app'
+include ':app', ':githubuserfavoriteapps'
