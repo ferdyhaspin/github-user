@@ -10,4 +10,9 @@
     <string name="success_deleted">Favorit berhasil dihapus</string>
     <string name="success_added">Favorit berhasil ditambahkan</string>
     <string name="delete">hapus</string>
+    <string name="reminder">reminder</string>
+    <string name="title_reminder">Aktifkan pengingat setiap pukul 09.00 AM.</string>
+    <string name="settings">Setting</string>
+    <string name="settings_reminder">Pengaturan Pengingat</string>
+    <string name="daily_message_reminder">Let\'s find populer user on Github!</string>
 </resources>

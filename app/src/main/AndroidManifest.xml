@@ -13,6 +13,8 @@
         android:roundIcon="@mipmap/ic_logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <activity android:name=".ui.setting.SettingActivity" />
         <activity android:name=".ui.favorite.FavoriteActivity" />
         <activity android:name=".ui.splash.SplashActivity">
             <intent-filter>
@@ -23,6 +25,19 @@
         </activity>
         <activity android:name=".ui.detail.DetailActivity" />
         <activity android:name=".ui.main.MainActivity" />
+
+        <receiver
+            android:name=".reminder.NotificationReceiver"
+            android:enabled="true"
+            android:exported="true" />
+
+        <provider
+            android:name=".provider.FavoriteProvider"
+            android:authorities="com.ferdyhaspin.githubuserapp"
+            android:enabled="true"
+            android:exported="true"
+            android:multiprocess="true"
+            android:readPermission="com.ferdyhaspin.githubuserapp.READ_DATABASE" />
     </application>
 
 </manifest>

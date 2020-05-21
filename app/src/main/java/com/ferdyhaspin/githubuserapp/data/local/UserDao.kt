@@ -1,5 +1,6 @@
 package com.ferdyhaspin.githubuserapp.data.local
 
+import android.database.Cursor
 import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
@@ -25,5 +26,11 @@ interface UserDao {
 
     @Query("SELECT * FROM user WHERE id = :id")
     suspend fun selectById(id: Int): User?
+
+    @Query("SELECT * FROM user")
+    fun provideSelectALl(): Cursor?
+
+    @Query("SELECT * FROM user WHERE id = :id")
+    fun provideSelectById(id: Long): Cursor?
 
 }

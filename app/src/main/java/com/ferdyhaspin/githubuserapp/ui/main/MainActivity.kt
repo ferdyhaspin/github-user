@@ -18,6 +18,7 @@ import com.ferdyhaspin.githubuserapp.data.model.User
 import com.ferdyhaspin.githubuserapp.ui.ViewModelFactory
 import com.ferdyhaspin.githubuserapp.ui.detail.DetailActivity
 import com.ferdyhaspin.githubuserapp.ui.favorite.FavoriteActivity
+import com.ferdyhaspin.githubuserapp.ui.setting.SettingActivity
 import com.ferdyhaspin.githubuserapp.util.ext.observe
 import com.ferdyhaspin.githubuserapp.util.ext.toGone
 import com.ferdyhaspin.githubuserapp.util.ext.toVisible
@@ -179,12 +180,15 @@ class MainActivity : BaseActivity(),
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.item_favorite -> {
+            R.id.item_favorite ->
                 Intent(this, FavoriteActivity::class.java).apply {
                     startActivity(this)
                 }
-            }
-            R.id.item_notification -> toast("Notification")
+
+            R.id.item_notification ->
+                Intent(this, SettingActivity::class.java).apply {
+                    startActivity(this)
+                }
         }
         return super.onOptionsItemSelected(item)
     }
