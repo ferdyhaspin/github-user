@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.android.material.snackbar.Snackbar
 import com.xwray.groupie.GroupAdapter
 import com.xwray.groupie.ViewHolder
 import kotlinx.android.synthetic.main.activity_main.*
@@ -20,14 +21,20 @@ class MainActivity : AppCompatActivity() {
         observeViewModel()
     }
 
+    override fun onResume() {
+        super.onResume()
+        viewModel.loadFavorite(this)
+    }
+
     private fun initViewModel() {
         viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        viewModel.loadFavorite()
     }
 
     private fun observeViewModel() {
         viewModel.user.observe(this, Observer {
-            if (it.isNotEmpty())
+            if (it.isEmpty())
+                Snackbar.make(rvUser, getString(R.string.empty_data), Snackbar.LENGTH_SHORT).show()
+            else
                 it.parseUser()
         })
     }

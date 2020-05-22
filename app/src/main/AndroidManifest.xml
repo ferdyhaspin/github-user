@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.ferdyhaspin.githubuserapp">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <permission
+        android:name="com.ferdyhaspin.githubuserapp.READ_DATABASE"
+        android:protectionLevel="normal" />
 
     <application
         android:name="com.ferdyhaspin.App"
@@ -29,14 +34,14 @@
         <receiver
             android:name=".reminder.NotificationReceiver"
             android:enabled="true"
-            android:exported="true" />
+            android:exported="true"
+            tools:ignore="ExportedReceiver" />
 
         <provider
             android:name=".provider.FavoriteProvider"
             android:authorities="com.ferdyhaspin.githubuserapp"
             android:enabled="true"
             android:exported="true"
-            android:multiprocess="true"
             android:readPermission="com.ferdyhaspin.githubuserapp.READ_DATABASE" />
     </application>
 

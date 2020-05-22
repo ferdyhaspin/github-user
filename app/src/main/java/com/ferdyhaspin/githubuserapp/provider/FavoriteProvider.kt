@@ -13,12 +13,13 @@ import com.ferdyhaspin.githubuserapp.data.local.UserDao
  */
 class FavoriteProvider : ContentProvider() {
 
+    private lateinit var db: AppDatabase
     private lateinit var userDao: UserDao
 
     companion object {
-        private const val DBNAME = "db_github"
+        const val DBNAME = "db_github"
         private const val DB_TABLE = "user"
-        private const val AUTHORITY = "com.ferdyhaspin.githubuserapp.provider"
+        private const val AUTHORITY = "com.ferdyhaspin.githubuserapp"
         private val uriMatcher = UriMatcher(UriMatcher.NO_MATCH)
 
         private const val CODE_FAV_DIR = 1
@@ -31,10 +32,10 @@ class FavoriteProvider : ContentProvider() {
     }
 
     override fun onCreate(): Boolean {
-        userDao = Room
+        db = Room
             .databaseBuilder(context as Context, AppDatabase::class.java, DBNAME)
             .build()
-            .userDao()
+        userDao = db.userDao()
         return true
     }
 

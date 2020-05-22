@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Github User Favorite Apps</string>
+    <string name="empty_data">TIdak ada data favorite</string>
 </resources>
