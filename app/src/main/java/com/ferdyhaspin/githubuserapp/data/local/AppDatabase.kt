@@ -5,8 +5,8 @@ import androidx.room.RoomDatabase
 import com.ferdyhaspin.githubuserapp.data.model.User
 
 /**
- * Created by ferdyhaspin & ilhamelmujib on 13/04/20.
- * Copyright (c) 2020 Bank Syariah Mandiri - Super Apps All rights reserved.
+ * Created by ferdyhaspin on 13/04/20.
+ * Copyright (c) 2020 Github User Apps All rights reserved.
  */
 const val DB_NAME = "db_github"
 

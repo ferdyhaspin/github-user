@@ -9,8 +9,8 @@ import com.ferdyhaspin.githubuserapp.R
 import com.ferdyhaspin.githubuserapp.reminder.NotificationReceiver
 
 /**
- * Created by ferdyhaspin & ilhamelmujib on 21/05/20.
- * Copyright (c) 2020 Bank Syariah Mandiri - Super Apps All rights reserved.
+ * Created by ferdyhaspin on 21/05/20.
+ * Copyright (c) 2020 Github User Apps All rights reserved.
  */
 
 class PreferencesFragment : PreferenceFragmentCompat(),
