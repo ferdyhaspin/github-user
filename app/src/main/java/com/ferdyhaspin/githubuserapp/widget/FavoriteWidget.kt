@@ -18,7 +18,6 @@ import com.ferdyhaspin.githubuserapp.data.model.User
 class FavoriteWidget : AppWidgetProvider() {
 
     companion object {
-        private const val TOAST_ACTION = "com.ferdyhaspin.githubuserapp.TOAST_ACTION"
         const val EXTRA_ITEM = "com.ferdyhaspin.githubuserapp.EXTRA_ITEM"
 
         private fun updateAppWidget(
@@ -35,7 +34,6 @@ class FavoriteWidget : AppWidgetProvider() {
             views.setEmptyView(R.id.stack_view, R.id.empty_view)
 
             val toastIntent = Intent(context, FavoriteWidget::class.java)
-            toastIntent.action = TOAST_ACTION
             toastIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
             intent.data = intent.toUri(Intent.URI_INTENT_SCHEME).toUri()
 
@@ -76,11 +74,6 @@ class FavoriteWidget : AppWidgetProvider() {
                 val thisWidget = ComponentName(context, FavoriteWidget::class.java)
                 val appWidgetIds = appWidgetManager.getAppWidgetIds(thisWidget)
                 appWidgetManager.notifyAppWidgetViewDataChanged(appWidgetIds, R.id.stack_view)
-            }
-            TOAST_ACTION -> {
-                val user = intent.getParcelableExtra<User>(EXTRA_ITEM)
-                Toast.makeText(context, "Favorite user name: ${user?.login}", Toast.LENGTH_SHORT)
-                    .show()
             }
         }
     }

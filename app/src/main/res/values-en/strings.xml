@@ -12,10 +12,8 @@
     <string name="delete">delete</string>
     <string name="reminder">reminder</string>
     <string name="title_reminder">Activate the reminder every 09.00 AM.</string>
-    <string name="settings">Setting</string>
     <string name="settings_reminder">Reminder Settings</string>
-    <string name="daily_message_reminder">Let\'s find populer user on Github!</string>
+    <string name="daily_message_reminder">Let\'s find popular user on Github!</string>
     <string name="appwidget_text">Favorite User</string>
-    <string name="add_widget">Add widget</string>
     <string name="empty_text">Empty Data</string>
 </resources>

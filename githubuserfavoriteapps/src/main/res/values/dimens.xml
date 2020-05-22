@@ -2,18 +2,11 @@
 <resources>
 
     <!--genaral spacing-->
-    <dimen name="elevation">2.5dp</dimen>
     <dimen name="spacing_medium">5dp</dimen>
-    <dimen name="spacing_xmedium">7dp</dimen>
     <dimen name="spacing_middle">10dp</dimen>
     <dimen name="spacing_large">15dp</dimen>
-    <dimen name="spacing_xlarge">35dp</dimen>
-    <dimen name="spacing_xxxlarge">55dp</dimen>
 
     <!--general size-->
-    <dimen name="font_medium_small">14sp</dimen>
     <dimen name="font_small">16sp</dimen>
-    <dimen name="font_medium">20sp</dimen>
-    <dimen name="font_large">26sp</dimen>
 
 </resources>
