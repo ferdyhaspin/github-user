@@ -1,6 +1,8 @@
 package com.ferdyhaspin.githubuserapp.data.repository
 
+import android.appwidget.AppWidgetManager
 import android.content.Context
+import android.content.Intent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.ferdyhaspin.githubuserapp.BuildConfig

@@ -33,4 +33,6 @@ interface UserDao {
     @Query("SELECT * FROM user WHERE id = :id")
     fun provideSelectById(id: Long): Cursor?
 
+    @Query("SELECT * FROM user")
+    fun getAllFavorite(): List<User>
 }

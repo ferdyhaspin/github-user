@@ -5,6 +5,7 @@ import android.database.Cursor
 import android.net.Uri
 import androidx.room.Room
 import com.ferdyhaspin.githubuserapp.data.local.AppDatabase
+import com.ferdyhaspin.githubuserapp.data.local.DB_NAME
 import com.ferdyhaspin.githubuserapp.data.local.UserDao
 
 /**
@@ -17,7 +18,6 @@ class FavoriteProvider : ContentProvider() {
     private lateinit var userDao: UserDao
 
     companion object {
-        const val DBNAME = "db_github"
         private const val DB_TABLE = "user"
         private const val AUTHORITY = "com.ferdyhaspin.githubuserapp"
         private val uriMatcher = UriMatcher(UriMatcher.NO_MATCH)
@@ -33,7 +33,7 @@ class FavoriteProvider : ContentProvider() {
 
     override fun onCreate(): Boolean {
         db = Room
-            .databaseBuilder(context as Context, AppDatabase::class.java, DBNAME)
+            .databaseBuilder(context as Context, AppDatabase::class.java, DB_NAME)
             .build()
         userDao = db.userDao()
         return true

@@ -1,5 +1,6 @@
 package com.ferdyhaspin.githubuserapp.ui.detail
 
+import android.appwidget.AppWidgetManager
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
@@ -166,6 +167,8 @@ class DetailActivity : BaseActivity() {
                             viewModel.addFavorite(it)
                             toast(getString(R.string.success_added))
                         }
+                        val brIntent = Intent(AppWidgetManager.ACTION_APPWIDGET_UPDATE)
+                        sendBroadcast(brIntent)
                     }
                 }
             }

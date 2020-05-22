@@ -8,6 +8,8 @@ import com.ferdyhaspin.githubuserapp.data.model.User
  * Created by ferdyhaspin & ilhamelmujib on 13/04/20.
  * Copyright (c) 2020 Bank Syariah Mandiri - Super Apps All rights reserved.
  */
+const val DB_NAME = "db_github"
+
 @Database(
     entities = [User::class],
     version = 1,
